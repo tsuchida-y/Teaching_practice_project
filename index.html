@@ -13,11 +13,11 @@
             -moz-osx-font-smoothing: grayscale;
         }
         .screen {
-            display: none;
+            display: none; /* 初期状態は非表示 */
             animation: fadeIn 0.3s ease-out;
         }
         .screen.active {
-            display: flex;
+            display: flex; /* アクティブな画面を表示 */
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
@@ -31,11 +31,22 @@
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
+            background: #cbd5e1; /* slate-300 */
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+            background: #94a3b8; /* slate-500 */
+        }
+        .timetable-cell {
+            min-height: 60px; /* セルの最小の高さを設定 */
+            padding: 0.5rem; /* Tailwindのp-2相当 */
+            border-radius: 0.375rem; /* Tailwindのrounded-md相当 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out;
         }
     </style>
 </head>
@@ -59,105 +70,14 @@
                     </button>
                 </div>
             </header>
-
-            <main class="flex-grow p-3 space-y-2 overflow-y-auto">
-                <div class="grid grid-cols-6 gap-1 text-center text-sm">
-                    <div class="p-1"></div> <div class="font-semibold p-1 rounded-md bg-slate-200">月</div>
-                    <div class="font-semibold p-1 rounded-md bg-slate-200">火</div>
-                    <div class="font-semibold p-1 rounded-md bg-slate-200">水</div>
-                    <div class="font-semibold p-1 rounded-md bg-slate-200">木</div>
-                    <div class="font-semibold p-1 rounded-md bg-slate-200">金</div>
-
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">1</div>
-                    <div class="bg-sky-100 p-2 rounded-md min-h-[60px] flex flex-col justify-center items-center cursor-pointer hover:bg-sky-200 transition-colors" onclick="showScreen('category-select-screen')">
-                        <span class="font-semibold text-sky-800">システム論</span>
-                        <span class="text-xs text-sky-600">201F</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-green-100 p-2 rounded-md min-h-[60px] flex flex-col justify-center items-center cursor-pointer hover:bg-green-200 transition-colors" onclick="showScreen('category-select-screen')">
-                        <span class="font-semibold text-green-800">英語</span>
-                        <span class="text-xs text-green-600">303講義室</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-orange-100 p-2 rounded-md min-h-[60px] flex flex-col justify-center items-center cursor-pointer hover:bg-orange-200 transition-colors" onclick="showScreen('category-select-screen')">
-                        <span class="font-semibold text-orange-800">体育</span>
-                        <span class="text-xs text-orange-600">体育館</span>
-                    </div>
-
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">2</div>
-                    <div class="bg-sky-100 p-2 rounded-md min-h-[60px] flex flex-col justify-center items-center cursor-pointer hover:bg-sky-200 transition-colors" onclick="showScreen('category-select-screen')">
-                        <span class="font-semibold text-sky-800">情報基礎</span>
-                        <span class="text-xs text-sky-600">201F</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-green-100 p-2 rounded-md min-h-[60px] flex flex-col justify-center items-center cursor-pointer hover:bg-green-200 transition-colors" onclick="showScreen('category-select-screen')">
-                        <span class="font-semibold text-green-800">英語</span>
-                        <span class="text-xs text-green-600">303講義室</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">昼</div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">3</div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-purple-100 p-2 rounded-md min-h-[60px] flex flex-col justify-center items-center cursor-pointer hover:bg-purple-200 transition-colors" onclick="showScreen('category-select-screen')">
-                        <span class="font-semibold text-purple-800">数学演習</span>
-                        <span class="text-xs text-purple-600">101演習室</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-purple-100 p-2 rounded-md min-h-[60px] flex flex-col justify-center items-center cursor-pointer hover:bg-purple-200 transition-colors" onclick="showScreen('category-select-screen')">
-                        <span class="font-semibold text-purple-800">数学演習</span>
-                        <span class="text-xs text-purple-600">101演習室</span>
-                    </div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">4</div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">5</div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">6</div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    
-                    <div class="font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center">7</div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-                    <div class="bg-white p-2 rounded-md min-h-[60px] border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors" onclick="showScreen('category-select-screen')"></div>
-
-                </div>
-            </main>
-            <button onclick="showScreen('category-select-screen')" class="fixed bottom-6 right-6 bg-sky-600 text-white p-4 rounded-full shadow-lg hover:bg-sky-700 transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50" aria-label="予定を追加">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                </svg>
-            </button>
-        </section>
+            <main class="flex-grow p-3 space-y-2 overflow-y-auto" id="timetable-grid-container">
+                </main>
+            </section>
 
         <section id="category-select-screen" class="screen flex-col h-full">
             <header class="bg-slate-700 text-white p-4 shadow-md sticky top-0 z-10">
                 <div class="flex items-center">
-                    <button onclick="showScreen('timetable-screen')" class="p-2 rounded-md hover:bg-slate-800 transition-colors mr-2" aria-label="戻る">
+                    <button onclick="goBack()" class="p-2 rounded-md hover:bg-slate-800 transition-colors mr-2" aria-label="戻る">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
@@ -166,52 +86,111 @@
                 </div>
             </header>
             <main class="flex-grow p-6 flex flex-col justify-center items-center space-y-6">
-                <button onclick="showScreen('class-info-screen')" class="w-full max-w-xs bg-sky-500 hover:bg-sky-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-50 text-lg">
-                    授業の予定
+                <button onclick="showScreen('class-info-edit-screen', { isNew: true })" class="w-full max-w-xs bg-sky-500 hover:bg-sky-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-50 text-lg">
+                    授業の予定を追加
                 </button>
-                <button onclick="showScreen('other-event-screen')" class="w-full max-w-xs bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50 text-lg">
-                    授業以外の予定
+                <button onclick="showScreen('other-event-screen', { isNew: true })" class="w-full max-w-xs bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50 text-lg">
+                    授業以外の予定を追加
                 </button>
             </main>
         </section>
 
-        <section id="class-info-screen" class="screen flex-col h-full">
+        <section id="class-detail-view-screen" class="screen flex-col h-full">
             <header class="bg-slate-700 text-white p-4 shadow-md sticky top-0 z-10">
-                <div class="flex items-center">
-                    <button onclick="showScreen('category-select-screen')" class="p-2 rounded-md hover:bg-slate-800 transition-colors mr-2" aria-label="戻る">
+                <div class="flex justify-between items-center">
+                    <button onclick="goBack()" class="p-2 rounded-md hover:bg-slate-800 transition-colors" aria-label="戻る">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
                     </button>
-                    <h1 class="text-xl font-semibold">授業情報を入力</h1>
+                    <h1 class="text-xl font-semibold" id="class-detail-title">授業詳細</h1>
+                    <button onclick="editClassDetail()" class="p-2 rounded-md hover:bg-slate-800 transition-colors" aria-label="編集">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                        </svg>
+                    </button>
                 </div>
             </header>
-            <main class="flex-grow p-6 space-y-6 overflow-y-auto">
+            <main class="flex-grow p-6 space-y-4 overflow-y-auto text-sm">
+                <div class="bg-slate-50 p-3 rounded-md shadow">
+                    <h2 class="text-lg font-semibold text-sky-700 mb-1" id="view-class-name">システム論</h2>
+                    <p><strong class="font-medium text-slate-600">教員名:</strong> <span id="view-class-teacher">山田 太郎</span></p>
+                    <p><strong class="font-medium text-slate-600">単位数:</strong> <span id="view-class-credits">2</span></p>
+                    <p><strong class="font-medium text-slate-600">開講時期:</strong> <span id="view-class-term">前期 月曜1限</span></p>
+                    <p><strong class="font-medium text-slate-600">教室:</strong> <span id="view-class-room-detail">201F</span></p>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-md shadow">
+                    <h3 class="font-semibold text-slate-700 mb-1">シラバスURL</h3>
+                    <a href="#" id="view-class-syllabus" class="text-sky-600 hover:text-sky-800 hover:underline break-all" target="_blank">https://example.com/syllabus/sys101</a>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-md shadow">
+                    <h3 class="font-semibold text-slate-700 mb-1">授業概要/備考</h3>
+                    <p class="text-slate-600 whitespace-pre-wrap" id="view-class-description">この授業では、情報システムの基本的な考え方と設計手法について学びます。グループワークや発表も多く取り入れます。</p>
+                </div>
+            </main>
+        </section>
+
+        <section id="class-info-edit-screen" class="screen flex-col h-full">
+            <header class="bg-slate-700 text-white p-4 shadow-md sticky top-0 z-10">
+                <div class="flex items-center">
+                    <button onclick="goBack()" class="p-2 rounded-md hover:bg-slate-800 transition-colors mr-2" aria-label="戻る">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                        </svg>
+                    </button>
+                    <h1 class="text-xl font-semibold" id="edit-class-title">授業情報を入力</h1>
+                </div>
+            </header>
+            <main class="flex-grow p-6 space-y-4 overflow-y-auto text-sm">
                 <div>
-                    <label for="class-name" class="block text-sm font-medium text-slate-700 mb-1">授業名</label>
-                    <input type="text" id="class-name" name="class-name" placeholder="例: 情報基礎" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                    <label for="edit-class-name" class="block font-medium text-slate-700 mb-1">授業名</label>
+                    <input type="text" id="edit-class-name" placeholder="例: 情報基礎" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
                 </div>
                 <div>
-                    <label for="class-room" class="block text-sm font-medium text-slate-700 mb-1">教室</label>
-                    <input type="text" id="class-room" name="class-room" placeholder="例: 201F" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                    <label for="edit-class-teacher" class="block font-medium text-slate-700 mb-1">教員名</label>
+                    <input type="text" id="edit-class-teacher" placeholder="例: 山田 太郎" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
                 </div>
                 <div>
-                    <label for="class-details" class="block text-sm font-medium text-slate-700 mb-1">詳細・メモ</label>
-                    <textarea id="class-details" name="class-details" rows="4" placeholder="持ち物やメモなど" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm"></textarea>
+                    <label for="edit-class-credits" class="block font-medium text-slate-700 mb-1">単位数</label>
+                    <input type="number" id="edit-class-credits" placeholder="例: 2" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
                 </div>
                 <div>
-                    <label for="class-repeat" class="block text-sm font-medium text-slate-700 mb-1">繰り返し設定</label>
-                    <select id="class-repeat" name="class-repeat" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm bg-white">
-                        <option>毎週月曜 1限</option>
-                        <option>繰り返さない</option>
-                        <option>毎日</option>
-                        <option>毎週 (曜日指定)</option>
-                        <option>カスタム...</option>
+                    <label for="edit-class-term" class="block font-medium text-slate-700 mb-1">開講時期</label>
+                    <input type="text" id="edit-class-term" placeholder="例: 前期 月曜1限" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                </div>
+                <div>
+                    <label for="edit-class-room" class="block font-medium text-slate-700 mb-1">教室</label>
+                    <input type="text" id="edit-class-room" placeholder="例: 201F" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                </div>
+                <div>
+                    <label for="edit-class-syllabus" class="block font-medium text-slate-700 mb-1">シラバスURL</label>
+                    <input type="url" id="edit-class-syllabus" placeholder="https://example.com/syllabus" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                </div>
+                <div>
+                    <label for="edit-class-description" class="block font-medium text-slate-700 mb-1">授業概要/備考</label>
+                    <textarea id="edit-class-description" rows="3" placeholder="持ち物やメモなど" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></textarea>
+                </div>
+                <div>
+                    <label for="edit-class-color" class="block font-medium text-slate-700 mb-1">セルの色</label>
+                    <select id="edit-class-color" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 bg-white">
+                        <option value="bg-sky-100 text-sky-800">スカイブルー</option>
+                        <option value="bg-green-100 text-green-800">グリーン</option>
+                        <option value="bg-orange-100 text-orange-800">オレンジ</option>
+                        <option value="bg-purple-100 text-purple-800">パープル</option>
+                        <option value="bg-red-100 text-red-800">レッド</option>
+                        <option value="bg-yellow-100 text-yellow-800">イエロー</option>
+                        <option value="bg-pink-100 text-pink-800">ピンク</option>
+                        <option value="bg-indigo-100 text-indigo-800">インディゴ</option>
+                        <option value="bg-slate-100 text-slate-800">グレー</option>
                     </select>
                 </div>
+                 <div>
+                    <label for="edit-class-repeat" class="block font-medium text-slate-700 mb-1">繰り返し設定</label>
+                    <input type="text" id="edit-class-repeat" placeholder="例: 毎週月曜 1限" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                </div>
                 <div>
-                    <label for="class-notify" class="block text-sm font-medium text-slate-700 mb-1">通知設定</label>
-                    <select id="class-notify" name="class-notify" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm bg-white">
+                    <label for="edit-class-notify" class="block font-medium text-slate-700 mb-1">通知設定</label>
+                     <select id="edit-class-notify" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 bg-white">
                         <option>10分前</option>
                         <option>なし</option>
                         <option>5分前</option>
@@ -222,7 +201,7 @@
                 </div>
             </main>
             <footer class="p-4 border-t border-slate-200 sticky bottom-0 bg-white">
-                <button onclick="showScreen('timetable-screen')" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50 text-lg">
+                <button onclick="saveClassInfo()" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-opacity-50 text-lg">
                     保存する
                 </button>
             </footer>
@@ -231,7 +210,7 @@
         <section id="other-event-screen" class="screen flex-col h-full">
             <header class="bg-slate-700 text-white p-4 shadow-md sticky top-0 z-10">
                 <div class="flex items-center">
-                    <button onclick="showScreen('category-select-screen')" class="p-2 rounded-md hover:bg-slate-800 transition-colors mr-2" aria-label="戻る">
+                    <button onclick="goBack()" class="p-2 rounded-md hover:bg-slate-800 transition-colors mr-2" aria-label="戻る">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                         </svg>
@@ -239,22 +218,22 @@
                     <h1 class="text-xl font-semibold">予定を入力</h1>
                 </div>
             </header>
-            <main class="flex-grow p-6 space-y-6 overflow-y-auto">
+            <main class="flex-grow p-6 space-y-4 overflow-y-auto text-sm">
                 <div>
-                    <label for="event-title" class="block text-sm font-medium text-slate-700 mb-1">予定のタイトル</label>
-                    <input type="text" id="event-title" name="event-title" placeholder="例: サークルのミーティング" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm">
+                    <label for="event-title" class="block font-medium text-slate-700 mb-1">予定のタイトル</label>
+                    <input type="text" id="event-title" placeholder="例: サークルのミーティング" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500">
                 </div>
                 <div>
-                    <label for="event-details" class="block text-sm font-medium text-slate-700 mb-1">詳細・メモ</label>
-                    <textarea id="event-details" name="event-details" rows="4" placeholder="場所や内容など" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm"></textarea>
+                    <label for="event-details" class="block font-medium text-slate-700 mb-1">詳細・メモ</label>
+                    <textarea id="event-details" rows="3" placeholder="場所や内容など" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"></textarea>
                 </div>
                  <div>
-                    <label for="event-datetime" class="block text-sm font-medium text-slate-700 mb-1">日時</label>
-                    <input type="datetime-local" id="event-datetime" name="event-datetime" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm">
+                    <label for="event-datetime" class="block font-medium text-slate-700 mb-1">日時</label>
+                    <input type="datetime-local" id="event-datetime" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500">
                 </div>
                 <div>
-                    <label for="event-repeat" class="block text-sm font-medium text-slate-700 mb-1">繰り返し設定</label>
-                    <select id="event-repeat" name="event-repeat" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 sm:text-sm bg-white">
+                    <label for="event-repeat" class="block font-medium text-slate-700 mb-1">繰り返し設定</label>
+                    <select id="event-repeat" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 bg-white">
                         <option>繰り返さない</option>
                         <option>毎日</option>
                         <option>毎週</option>
@@ -264,18 +243,33 @@
                 </div>
             </main>
             <footer class="p-4 border-t border-slate-200 sticky bottom-0 bg-white">
-                <button onclick="showScreen('timetable-screen')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 text-lg">
+                <button onclick="saveOtherEvent()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-lg shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 text-lg">
                     決定
                 </button>
             </footer>
         </section>
-
     </div>
 
     <script>
-        let currentScreen = 'timetable-screen';
+        // --- データ管理 ---
+        // ダミーの授業データ (実際にはDBやAPIから取得)
+        // 各授業データにIDと色情報を追加
+        let classesData = {
+            "mon-1": { id: "mon-1", name: "システム論", room: "201F", teacher: "田中 教授", credits: 2, term: "前期 月曜1限", syllabus: "https://example.com/syllabus/sys101", description: "システムの基礎を学ぶ。", colorClasses: "bg-sky-100 text-sky-800 hover:bg-sky-200", repeat: "毎週月曜 1限", notify: "10分前" },
+            "wed-1": { id: "wed-1", name: "英語", room: "303講義室", teacher: "Smith 先生", credits: 1, term: "通年 水曜1限", syllabus: "https://example.com/syllabus/eng101", description: "実践的な英会話。", colorClasses: "bg-green-100 text-green-800 hover:bg-green-200", repeat: "毎週水曜 1限", notify: "15分前" },
+            "fri-1": { id: "fri-1", name: "体育", room: "体育館", teacher: "鈴木 指導員", credits: 1, term: "前期 金曜1限", syllabus: "https://example.com/syllabus/pe101", description: "バスケットボール", colorClasses: "bg-orange-100 text-orange-800 hover:bg-orange-200", repeat: "毎週金曜 1限", notify: "30分前" },
+            "tue-3": { id: "tue-3", name: "数学演習", room: "101演習室", teacher: "佐藤 准教授", credits: 2, term: "後期 火曜3限", syllabus: "https://example.com/syllabus/math202", description: "微積分の応用問題。", colorClasses: "bg-purple-100 text-purple-800 hover:bg-purple-200", repeat: "毎週火曜 3限", notify: "なし" },
+        };
+        let otherEventsData = {}; // 授業以外の予定データ
 
-        function showScreen(screenId) {
+        // --- 画面遷移と状態管理 ---
+        let currentScreen = 'timetable-screen';
+        let previousScreen = null; // 戻る機能のため
+        let currentEditingClassId = null; // 現在編集中の授業ID
+        let currentSelectedCellId = null; // 時間割でタップされたセルのID (day-period)
+
+        function showScreen(screenId, params = {}) {
+            previousScreen = currentScreen;
             document.querySelectorAll('.screen').forEach(screen => {
                 screen.classList.remove('active');
             });
@@ -284,12 +278,209 @@
                 nextScreen.classList.add('active');
                 currentScreen = screenId;
                 window.scrollTo(0, 0);
+
+                // 画面表示時の初期化処理
+                if (screenId === 'class-info-edit-screen') {
+                    populateClassEditForm(params.classId, params.isNew);
+                } else if (screenId === 'class-detail-view-screen' && params.classId) {
+                    populateClassDetailView(params.classId);
+                } else if (screenId === 'other-event-screen' && params.isNew) {
+                    populateOtherEventFormForNew();
+                }
             } else {
                 console.error("Screen with id '" + screenId + "' not found.");
             }
         }
 
+        function goBack() {
+            if (previousScreen) {
+                // 特定の画面遷移のロジック（例：編集画面から詳細表示に戻るなど）
+                if (currentScreen === 'class-info-edit-screen' && currentEditingClassId && classesData[currentEditingClassId]) {
+                     showScreen('class-detail-view-screen', { classId: currentEditingClassId });
+                } else if (currentScreen === 'class-detail-view-screen' || currentScreen === 'category-select-screen') {
+                    showScreen('timetable-screen');
+                }
+                 else {
+                    showScreen(previousScreen);
+                }
+            } else {
+                showScreen('timetable-screen'); // デフォルトは時間割画面へ
+            }
+        }
+
+
+        // --- 時間割描画 ---
+        const days = ["mon", "tue", "wed", "thu", "fri"];
+        const dayLabels = ["月", "火", "水", "木", "金"];
+        const periods = ["1", "2", "昼", "3", "4", "5", "6", "7"];
+
+        function renderTimetable() {
+            const container = document.getElementById('timetable-grid-container');
+            container.innerHTML = ''; // 既存のグリッドをクリア
+
+            const grid = document.createElement('div');
+            grid.className = 'grid grid-cols-6 gap-1 text-center text-sm';
+
+            // ヘッダー（曜日）
+            grid.appendChild(document.createElement('div')); // 左上空セル
+            dayLabels.forEach(label => {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'font-semibold p-1 rounded-md bg-slate-200';
+                dayCell.textContent = label;
+                grid.appendChild(dayCell);
+            });
+
+            // 時間割セル
+            periods.forEach(period => {
+                const periodCell = document.createElement('div');
+                periodCell.className = 'font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center';
+                periodCell.textContent = period;
+                grid.appendChild(periodCell);
+
+                days.forEach(day => {
+                    const cellId = `${day}-${period}`;
+                    const cell = document.createElement('div');
+                    cell.id = cellId;
+                    cell.className = 'timetable-cell border border-slate-200'; // 基本スタイル
+
+                    const classInfo = classesData[cellId];
+                    if (classInfo) {
+                        cell.innerHTML = `<span class="font-semibold">${classInfo.name}</span><span class="text-xs">${classInfo.room}</span>`;
+                        // 色を適用
+                        const colorParts = classInfo.colorClasses.split(' ');
+                        colorParts.forEach(c => cell.classList.add(c));
+                        cell.onclick = () => showScreen('class-detail-view-screen', { classId: cellId });
+                    } else {
+                        cell.classList.add('bg-white', 'hover:bg-slate-50');
+                        cell.onclick = () => {
+                            currentSelectedCellId = cellId; // タップされたセル情報を保存
+                            showScreen('category-select-screen');
+                        }
+                    }
+                    grid.appendChild(cell);
+                });
+            });
+            container.appendChild(grid);
+        }
+
+        // --- 授業詳細表示 ---
+        function populateClassDetailView(classId) {
+            const classInfo = classesData[classId];
+            if (!classInfo) return;
+            currentEditingClassId = classId; // 詳細表示中の授業IDを編集用に保持
+
+            document.getElementById('view-class-name').textContent = classInfo.name || 'N/A';
+            document.getElementById('class-detail-title').textContent = classInfo.name || '授業詳細';
+            document.getElementById('view-class-teacher').textContent = classInfo.teacher || 'N/A';
+            document.getElementById('view-class-credits').textContent = classInfo.credits || 'N/A';
+            document.getElementById('view-class-term').textContent = classInfo.term || 'N/A';
+            document.getElementById('view-class-room-detail').textContent = classInfo.room || 'N/A';
+            const syllabusLink = document.getElementById('view-class-syllabus');
+            syllabusLink.href = classInfo.syllabus || '#';
+            syllabusLink.textContent = classInfo.syllabus || 'N/A';
+            document.getElementById('view-class-description').textContent = classInfo.description || 'N/A';
+        }
+
+        // --- 授業情報編集 ---
+        function editClassDetail() {
+            if (currentEditingClassId) {
+                showScreen('class-info-edit-screen', { classId: currentEditingClassId, isNew: false });
+            }
+        }
+
+        function populateClassEditForm(classId, isNew = false) {
+            const titleEl = document.getElementById('edit-class-title');
+            currentEditingClassId = isNew ? null : classId; // 新規の場合はIDをnullに
+
+            if (isNew) {
+                titleEl.textContent = '新規授業情報を入力';
+                document.getElementById('edit-class-name').value = '';
+                document.getElementById('edit-class-teacher').value = '';
+                document.getElementById('edit-class-credits').value = '';
+                document.getElementById('edit-class-term').value = currentSelectedCellId ? `${dayLabels[days.indexOf(currentSelectedCellId.split('-')[0])]}曜 ${currentSelectedCellId.split('-')[1]}限` : ''; // 自動セット
+                document.getElementById('edit-class-room').value = '';
+                document.getElementById('edit-class-syllabus').value = '';
+                document.getElementById('edit-class-description').value = '';
+                document.getElementById('edit-class-color').value = 'bg-sky-100 text-sky-800'; // デフォルト色
+                document.getElementById('edit-class-repeat').value = '';
+                document.getElementById('edit-class-notify').value = '10分前';
+            } else {
+                const classInfo = classesData[classId];
+                if (!classInfo) return;
+                titleEl.textContent = '授業情報を編集';
+                document.getElementById('edit-class-name').value = classInfo.name || '';
+                document.getElementById('edit-class-teacher').value = classInfo.teacher || '';
+                document.getElementById('edit-class-credits').value = classInfo.credits || '';
+                document.getElementById('edit-class-term').value = classInfo.term || '';
+                document.getElementById('edit-class-room').value = classInfo.room || '';
+                document.getElementById('edit-class-syllabus').value = classInfo.syllabus || '';
+                document.getElementById('edit-class-description').value = classInfo.description || '';
+                document.getElementById('edit-class-color').value = classInfo.colorClasses.split(' hover:')[0]; // hoverスタイルを除いたクラス
+                document.getElementById('edit-class-repeat').value = classInfo.repeat || '';
+                document.getElementById('edit-class-notify').value = classInfo.notify || '10分前';
+            }
+        }
+
+        function saveClassInfo() {
+            const idToSave = currentEditingClassId || currentSelectedCellId || `new-${Date.now()}`; // 新規の場合は新しいIDを生成するか、選択セルIDを使用
+            
+            // 既存の授業を上書き、または新しい授業を追加
+            classesData[idToSave] = {
+                id: idToSave,
+                name: document.getElementById('edit-class-name').value,
+                teacher: document.getElementById('edit-class-teacher').value,
+                credits: document.getElementById('edit-class-credits').value,
+                term: document.getElementById('edit-class-term').value,
+                room: document.getElementById('edit-class-room').value,
+                syllabus: document.getElementById('edit-class-syllabus').value,
+                description: document.getElementById('edit-class-description').value,
+                colorClasses: document.getElementById('edit-class-color').value + " hover:" + document.getElementById('edit-class-color').value.replace('-100', '-200'), // hover状態のクラスも設定
+                repeat: document.getElementById('edit-class-repeat').value,
+                notify: document.getElementById('edit-class-notify').value,
+            };
+            currentEditingClassId = null; // 編集状態をリセット
+            currentSelectedCellId = null; // 選択セル状態をリセット
+            renderTimetable();
+            showScreen('timetable-screen');
+        }
+
+        // --- 授業以外の予定 ---
+        function populateOtherEventFormForNew() {
+            document.getElementById('event-title').value = '';
+            document.getElementById('event-details').value = '';
+            // 日時自動設定 (簡易版: 現在日時を設定)
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); // ローカルタイムゾーンに調整
+            if (currentSelectedCellId) {
+                 // ここで currentSelectedCellId (例: "mon-1") を元に、より具体的な日時を設定するロジックを追加できます。
+                 // 例: 週の初めの日付 + 曜日オフセット + 時間帯オフセット
+                 // このモックアップでは簡略化のため、現在日時をデフォルトとします。
+                document.getElementById('event-datetime').value = now.toISOString().slice(0,16);
+            } else {
+                document.getElementById('event-datetime').value = now.toISOString().slice(0,16);
+            }
+            document.getElementById('event-repeat').value = '繰り返さない';
+        }
+
+        function saveOtherEvent() {
+            const eventId = `other-${Date.now()}`;
+            otherEventsData[eventId] = {
+                id: eventId,
+                title: document.getElementById('event-title').value,
+                details: document.getElementById('event-details').value,
+                datetime: document.getElementById('event-datetime').value,
+                repeat: document.getElementById('event-repeat').value,
+            };
+            // ここで otherEventsData を使って時間割に表示するなどの処理を追加できます（今回は省略）
+            console.log("授業以外の予定 保存:", otherEventsData[eventId]);
+            currentSelectedCellId = null;
+            showScreen('timetable-screen');
+        }
+
+
+        // --- 初期化 ---
         document.addEventListener('DOMContentLoaded', () => {
+            renderTimetable();
             showScreen(currentScreen);
         });
     </script>
