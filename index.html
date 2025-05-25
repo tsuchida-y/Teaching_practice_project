@@ -48,11 +48,23 @@
             cursor: pointer;
             transition: background-color 0.15s ease-in-out;
         }
+        /* PC表示時のフォントサイズ調整（任意） */
+        @media (min-width: 768px) { /* md breakpoint */
+            .timetable-cell span {
+                font-size: 0.875rem; /* text-sm */
+            }
+            .timetable-cell .font-semibold {
+                font-size: 1rem; /* text-base */
+            }
+            .text-xl { /* ヘッダータイトルなど */
+                font-size: 1.5rem; /* text-2xl */
+            }
+        }
     </style>
 </head>
 <body class="bg-slate-100 text-slate-800">
 
-    <div class="container mx-auto max-w-md min-h-screen bg-white shadow-lg flex flex-col">
+    <div class="container mx-auto max-w-md md:max-w-2xl lg:max-w-4xl min-h-screen bg-white shadow-lg flex flex-col">
 
         <section id="timetable-screen" class="screen active flex-col h-full">
             <header class="bg-sky-600 text-white p-4 shadow-md sticky top-0 z-10">
@@ -70,9 +82,9 @@
                     </button>
                 </div>
             </header>
-            <main class="flex-grow p-3 space-y-2 overflow-y-auto" id="timetable-grid-container">
+            <main class="flex-grow p-3 md:p-4 space-y-2 overflow-y-auto" id="timetable-grid-container">
                 </main>
-            </section>
+        </section>
 
         <section id="category-select-screen" class="screen flex-col h-full">
             <header class="bg-slate-700 text-white p-4 shadow-md sticky top-0 z-10">
@@ -86,10 +98,10 @@
                 </div>
             </header>
             <main class="flex-grow p-6 flex flex-col justify-center items-center space-y-6">
-                <button onclick="showScreen('class-info-edit-screen', { isNew: true })" class="w-full max-w-xs bg-sky-500 hover:bg-sky-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-50 text-lg">
+                <button onclick="showScreen('class-info-edit-screen', { isNew: true })" class="w-full max-w-xs md:max-w-sm bg-sky-500 hover:bg-sky-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-50 text-lg">
                     授業の予定を追加
                 </button>
-                <button onclick="showScreen('other-event-screen', { isNew: true })" class="w-full max-w-xs bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50 text-lg">
+                <button onclick="showScreen('other-event-screen', { isNew: true })" class="w-full max-w-xs md:max-w-sm bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-4 px-6 rounded-lg shadow-md transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-opacity-50 text-lg">
                     授業以外の予定を追加
                 </button>
             </main>
@@ -111,19 +123,19 @@
                     </button>
                 </div>
             </header>
-            <main class="flex-grow p-6 space-y-4 overflow-y-auto text-sm">
-                <div class="bg-slate-50 p-3 rounded-md shadow">
-                    <h2 class="text-lg font-semibold text-sky-700 mb-1" id="view-class-name">システム論</h2>
+            <main class="flex-grow p-6 md:p-8 space-y-4 overflow-y-auto text-sm md:text-base">
+                <div class="bg-slate-50 p-3 md:p-4 rounded-md shadow">
+                    <h2 class="text-lg md:text-xl font-semibold text-sky-700 mb-1" id="view-class-name">システム論</h2>
                     <p><strong class="font-medium text-slate-600">教員名:</strong> <span id="view-class-teacher">山田 太郎</span></p>
                     <p><strong class="font-medium text-slate-600">単位数:</strong> <span id="view-class-credits">2</span></p>
                     <p><strong class="font-medium text-slate-600">開講時期:</strong> <span id="view-class-term">前期 月曜1限</span></p>
                     <p><strong class="font-medium text-slate-600">教室:</strong> <span id="view-class-room-detail">201F</span></p>
                 </div>
-                <div class="bg-slate-50 p-3 rounded-md shadow">
+                <div class="bg-slate-50 p-3 md:p-4 rounded-md shadow">
                     <h3 class="font-semibold text-slate-700 mb-1">シラバスURL</h3>
                     <a href="#" id="view-class-syllabus" class="text-sky-600 hover:text-sky-800 hover:underline break-all" target="_blank">https://example.com/syllabus/sys101</a>
                 </div>
-                <div class="bg-slate-50 p-3 rounded-md shadow">
+                <div class="bg-slate-50 p-3 md:p-4 rounded-md shadow">
                     <h3 class="font-semibold text-slate-700 mb-1">授業概要/備考</h3>
                     <p class="text-slate-600 whitespace-pre-wrap" id="view-class-description">この授業では、情報システムの基本的な考え方と設計手法について学びます。グループワークや発表も多く取り入れます。</p>
                 </div>
@@ -141,7 +153,7 @@
                     <h1 class="text-xl font-semibold" id="edit-class-title">授業情報を入力</h1>
                 </div>
             </header>
-            <main class="flex-grow p-6 space-y-4 overflow-y-auto text-sm">
+            <main class="flex-grow p-6 md:p-8 space-y-4 overflow-y-auto text-sm md:text-base">
                 <div>
                     <label for="edit-class-name" class="block font-medium text-slate-700 mb-1">授業名</label>
                     <input type="text" id="edit-class-name" placeholder="例: 情報基礎" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
@@ -218,7 +230,7 @@
                     <h1 class="text-xl font-semibold">予定を入力</h1>
                 </div>
             </header>
-            <main class="flex-grow p-6 space-y-4 overflow-y-auto text-sm">
+            <main class="flex-grow p-6 md:p-8 space-y-4 overflow-y-auto text-sm md:text-base">
                 <div>
                     <label for="event-title" class="block font-medium text-slate-700 mb-1">予定のタイトル</label>
                     <input type="text" id="event-title" placeholder="例: サークルのミーティング" class="w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500">
@@ -248,25 +260,24 @@
                 </button>
             </footer>
         </section>
+
     </div>
 
     <script>
         // --- データ管理 ---
-        // ダミーの授業データ (実際にはDBやAPIから取得)
-        // 各授業データにIDと色情報を追加
         let classesData = {
             "mon-1": { id: "mon-1", name: "システム論", room: "201F", teacher: "田中 教授", credits: 2, term: "前期 月曜1限", syllabus: "https://example.com/syllabus/sys101", description: "システムの基礎を学ぶ。", colorClasses: "bg-sky-100 text-sky-800 hover:bg-sky-200", repeat: "毎週月曜 1限", notify: "10分前" },
             "wed-1": { id: "wed-1", name: "英語", room: "303講義室", teacher: "Smith 先生", credits: 1, term: "通年 水曜1限", syllabus: "https://example.com/syllabus/eng101", description: "実践的な英会話。", colorClasses: "bg-green-100 text-green-800 hover:bg-green-200", repeat: "毎週水曜 1限", notify: "15分前" },
             "fri-1": { id: "fri-1", name: "体育", room: "体育館", teacher: "鈴木 指導員", credits: 1, term: "前期 金曜1限", syllabus: "https://example.com/syllabus/pe101", description: "バスケットボール", colorClasses: "bg-orange-100 text-orange-800 hover:bg-orange-200", repeat: "毎週金曜 1限", notify: "30分前" },
             "tue-3": { id: "tue-3", name: "数学演習", room: "101演習室", teacher: "佐藤 准教授", credits: 2, term: "後期 火曜3限", syllabus: "https://example.com/syllabus/math202", description: "微積分の応用問題。", colorClasses: "bg-purple-100 text-purple-800 hover:bg-purple-200", repeat: "毎週火曜 3限", notify: "なし" },
         };
-        let otherEventsData = {}; // 授業以外の予定データ
+        let otherEventsData = {};
 
         // --- 画面遷移と状態管理 ---
         let currentScreen = 'timetable-screen';
-        let previousScreen = null; // 戻る機能のため
-        let currentEditingClassId = null; // 現在編集中の授業ID
-        let currentSelectedCellId = null; // 時間割でタップされたセルのID (day-period)
+        let previousScreen = null;
+        let currentEditingClassId = null;
+        let currentSelectedCellId = null;
 
         function showScreen(screenId, params = {}) {
             previousScreen = currentScreen;
@@ -279,7 +290,6 @@
                 currentScreen = screenId;
                 window.scrollTo(0, 0);
 
-                // 画面表示時の初期化処理
                 if (screenId === 'class-info-edit-screen') {
                     populateClassEditForm(params.classId, params.isNew);
                 } else if (screenId === 'class-detail-view-screen' && params.classId) {
@@ -294,7 +304,6 @@
 
         function goBack() {
             if (previousScreen) {
-                // 特定の画面遷移のロジック（例：編集画面から詳細表示に戻るなど）
                 if (currentScreen === 'class-info-edit-screen' && currentEditingClassId && classesData[currentEditingClassId]) {
                      showScreen('class-detail-view-screen', { classId: currentEditingClassId });
                 } else if (currentScreen === 'class-detail-view-screen' || currentScreen === 'category-select-screen') {
@@ -304,10 +313,9 @@
                     showScreen(previousScreen);
                 }
             } else {
-                showScreen('timetable-screen'); // デフォルトは時間割画面へ
+                showScreen('timetable-screen');
             }
         }
-
 
         // --- 時間割描画 ---
         const days = ["mon", "tue", "wed", "thu", "fri"];
@@ -316,24 +324,22 @@
 
         function renderTimetable() {
             const container = document.getElementById('timetable-grid-container');
-            container.innerHTML = ''; // 既存のグリッドをクリア
+            container.innerHTML = ''; 
 
             const grid = document.createElement('div');
-            grid.className = 'grid grid-cols-6 gap-1 text-center text-sm';
+            grid.className = 'grid grid-cols-6 gap-1 text-center text-sm md:gap-1.5';
 
-            // ヘッダー（曜日）
-            grid.appendChild(document.createElement('div')); // 左上空セル
+            grid.appendChild(document.createElement('div')); 
             dayLabels.forEach(label => {
                 const dayCell = document.createElement('div');
-                dayCell.className = 'font-semibold p-1 rounded-md bg-slate-200';
+                dayCell.className = 'font-semibold p-1 rounded-md bg-slate-200 text-xs md:text-sm';
                 dayCell.textContent = label;
                 grid.appendChild(dayCell);
             });
 
-            // 時間割セル
             periods.forEach(period => {
                 const periodCell = document.createElement('div');
-                periodCell.className = 'font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center';
+                periodCell.className = 'font-semibold p-1 rounded-md bg-slate-200 flex items-center justify-center text-xs md:text-sm';
                 periodCell.textContent = period;
                 grid.appendChild(periodCell);
 
@@ -341,19 +347,18 @@
                     const cellId = `${day}-${period}`;
                     const cell = document.createElement('div');
                     cell.id = cellId;
-                    cell.className = 'timetable-cell border border-slate-200'; // 基本スタイル
+                    cell.className = 'timetable-cell border border-slate-200'; 
 
                     const classInfo = classesData[cellId];
                     if (classInfo) {
-                        cell.innerHTML = `<span class="font-semibold">${classInfo.name}</span><span class="text-xs">${classInfo.room}</span>`;
-                        // 色を適用
+                        cell.innerHTML = `<span class="font-semibold text-xs md:text-sm">${classInfo.name}</span><span class="text-xs">${classInfo.room}</span>`;
                         const colorParts = classInfo.colorClasses.split(' ');
                         colorParts.forEach(c => cell.classList.add(c));
                         cell.onclick = () => showScreen('class-detail-view-screen', { classId: cellId });
                     } else {
                         cell.classList.add('bg-white', 'hover:bg-slate-50');
                         cell.onclick = () => {
-                            currentSelectedCellId = cellId; // タップされたセル情報を保存
+                            currentSelectedCellId = cellId; 
                             showScreen('category-select-screen');
                         }
                     }
@@ -367,7 +372,7 @@
         function populateClassDetailView(classId) {
             const classInfo = classesData[classId];
             if (!classInfo) return;
-            currentEditingClassId = classId; // 詳細表示中の授業IDを編集用に保持
+            currentEditingClassId = classId; 
 
             document.getElementById('view-class-name').textContent = classInfo.name || 'N/A';
             document.getElementById('class-detail-title').textContent = classInfo.name || '授業詳細';
@@ -390,18 +395,18 @@
 
         function populateClassEditForm(classId, isNew = false) {
             const titleEl = document.getElementById('edit-class-title');
-            currentEditingClassId = isNew ? null : classId; // 新規の場合はIDをnullに
+            currentEditingClassId = isNew ? null : classId; 
 
             if (isNew) {
                 titleEl.textContent = '新規授業情報を入力';
                 document.getElementById('edit-class-name').value = '';
                 document.getElementById('edit-class-teacher').value = '';
                 document.getElementById('edit-class-credits').value = '';
-                document.getElementById('edit-class-term').value = currentSelectedCellId ? `${dayLabels[days.indexOf(currentSelectedCellId.split('-')[0])]}曜 ${currentSelectedCellId.split('-')[1]}限` : ''; // 自動セット
+                document.getElementById('edit-class-term').value = currentSelectedCellId ? `${dayLabels[days.indexOf(currentSelectedCellId.split('-')[0])]}曜 ${currentSelectedCellId.split('-')[1]}限` : '';
                 document.getElementById('edit-class-room').value = '';
                 document.getElementById('edit-class-syllabus').value = '';
                 document.getElementById('edit-class-description').value = '';
-                document.getElementById('edit-class-color').value = 'bg-sky-100 text-sky-800'; // デフォルト色
+                document.getElementById('edit-class-color').value = 'bg-sky-100 text-sky-800'; 
                 document.getElementById('edit-class-repeat').value = '';
                 document.getElementById('edit-class-notify').value = '10分前';
             } else {
@@ -415,16 +420,15 @@
                 document.getElementById('edit-class-room').value = classInfo.room || '';
                 document.getElementById('edit-class-syllabus').value = classInfo.syllabus || '';
                 document.getElementById('edit-class-description').value = classInfo.description || '';
-                document.getElementById('edit-class-color').value = classInfo.colorClasses.split(' hover:')[0]; // hoverスタイルを除いたクラス
+                document.getElementById('edit-class-color').value = classInfo.colorClasses.split(' hover:')[0]; 
                 document.getElementById('edit-class-repeat').value = classInfo.repeat || '';
                 document.getElementById('edit-class-notify').value = classInfo.notify || '10分前';
             }
         }
 
         function saveClassInfo() {
-            const idToSave = currentEditingClassId || currentSelectedCellId || `new-${Date.now()}`; // 新規の場合は新しいIDを生成するか、選択セルIDを使用
+            const idToSave = currentEditingClassId || currentSelectedCellId || `new-${Date.now()}`; 
             
-            // 既存の授業を上書き、または新しい授業を追加
             classesData[idToSave] = {
                 id: idToSave,
                 name: document.getElementById('edit-class-name').value,
@@ -434,12 +438,12 @@
                 room: document.getElementById('edit-class-room').value,
                 syllabus: document.getElementById('edit-class-syllabus').value,
                 description: document.getElementById('edit-class-description').value,
-                colorClasses: document.getElementById('edit-class-color').value + " hover:" + document.getElementById('edit-class-color').value.replace('-100', '-200'), // hover状態のクラスも設定
+                colorClasses: document.getElementById('edit-class-color').value + " hover:" + document.getElementById('edit-class-color').value.replace('-100', '-200'),
                 repeat: document.getElementById('edit-class-repeat').value,
                 notify: document.getElementById('edit-class-notify').value,
             };
-            currentEditingClassId = null; // 編集状態をリセット
-            currentSelectedCellId = null; // 選択セル状態をリセット
+            currentEditingClassId = null; 
+            currentSelectedCellId = null; 
             renderTimetable();
             showScreen('timetable-screen');
         }
@@ -448,14 +452,13 @@
         function populateOtherEventFormForNew() {
             document.getElementById('event-title').value = '';
             document.getElementById('event-details').value = '';
-            // 日時自動設定 (簡易版: 現在日時を設定)
             const now = new Date();
-            now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); // ローカルタイムゾーンに調整
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); 
             if (currentSelectedCellId) {
-                 // ここで currentSelectedCellId (例: "mon-1") を元に、より具体的な日時を設定するロジックを追加できます。
-                 // 例: 週の初めの日付 + 曜日オフセット + 時間帯オフセット
-                 // このモックアップでは簡略化のため、現在日時をデフォルトとします。
+                // モックアップのため、タップしたセルの情報を元に具体的な日時を生成する代わりに現在時刻を使用
+                // 例： `const [day, period] = currentSelectedCellId.split('-');` を使って日付計算が可能
                 document.getElementById('event-datetime').value = now.toISOString().slice(0,16);
+                console.log("Tapped cell for other event:", currentSelectedCellId); // どのセルがタップされたか確認
             } else {
                 document.getElementById('event-datetime').value = now.toISOString().slice(0,16);
             }
@@ -471,12 +474,10 @@
                 datetime: document.getElementById('event-datetime').value,
                 repeat: document.getElementById('event-repeat').value,
             };
-            // ここで otherEventsData を使って時間割に表示するなどの処理を追加できます（今回は省略）
             console.log("授業以外の予定 保存:", otherEventsData[eventId]);
             currentSelectedCellId = null;
             showScreen('timetable-screen');
         }
-
 
         // --- 初期化 ---
         document.addEventListener('DOMContentLoaded', () => {
